@@ -148,7 +148,11 @@ server.get("/tweets", (req, res) => {
     }
   }
 
-  res.send(tweets.slice(0, 10));
+  if(tweetsInvertidosComAvatar.length < 10) {
+    res.send(tweetsInvertidosComAvatar);
+  }
+
+  res.send(tweetsInvertidosComAvatar.slice(0, 10));
 });
 
 server.listen(PORT, () => {
