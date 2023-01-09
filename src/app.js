@@ -140,6 +140,10 @@ server.post("/tweets", (req, res) => {
 server.get("/tweets", (req, res) => {
   const tweetsInvertidosComAvatar = tweets.reverse();
 
+  if(tweets.length === 0) {
+    res.send(tweets);
+  }
+
   for (let i = 0; i < tweetsInvertidosComAvatar.length; i++) {
     for (let j = 0; j < usuarios.length; j++) {
       if (tweetsInvertidosComAvatar[i].username === usuarios[j].username) {
@@ -158,8 +162,3 @@ server.get("/tweets", (req, res) => {
 server.listen(PORT, () => {
   console.log("Servidor rodando em http://localhost:5000");
 });
-
-// {
-//   "username": "shiba",
-//   "avatar": "https://nextshark.com/wp-content/uploads/2017/04/cute-dog-shiba-inu-ryuji-japan-57.jpg"
-// }
